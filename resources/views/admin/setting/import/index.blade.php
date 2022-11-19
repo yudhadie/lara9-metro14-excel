@@ -50,7 +50,15 @@
                                     </div>
                                 </div>
                                 <div class="card-footer d-flex justify-content-end py-6 px-9">
-                                    <a href="{{route('export.user')}}" class="btn btn-secondary me-2">Export</a>
+                                    <button type="button" class="btn btn-secondary me-2" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                        Export
+                                    </button>
+                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3" data-kt-menu="true">
+                                        <div class="menu-item px-3">
+                                            <a href="{{ route('print.user') }}" target="_blank" class="menu-link px-3">PDF</a>
+                                            <a href="{{ route('export.user') }}" class="menu-link px-3">EXCEL</a>
+                                        </div>
+                                    </div>
                                     <button type="submit" id="modal_form_submit" class="btn btn-primary">
                                         <span class="indicator-label">Import</span>
                                         <span class="indicator-progress">Please wait...

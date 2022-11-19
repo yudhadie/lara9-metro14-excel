@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DataController;
 use App\Http\Controllers\Admin\Information\ActivityController;
 use App\Http\Controllers\Admin\Setting\ExportController;
 use App\Http\Controllers\Admin\Setting\ImportController;
+use App\Http\Controllers\Admin\Setting\PrintController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
             Route::post('/setting/import', [ImportController::class, 'user'])->name('import.user');
             //Export
             Route::get('/setting/export', [ExportController::class, 'user'])->name('export.user');
+            //Print
+            Route::get('/setting/user/print', [PrintController::class, 'user'])->name('print.user');
             //User
             Route::resource('/setting/user', UserController::class);
             Route::get('/profile', [UserController::class, 'profile'])->name('profile');

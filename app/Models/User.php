@@ -73,6 +73,9 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-
+    public function team()
+    {
+        return $this->belongsTo(Team::class, 'current_team_id');
+    }
 
 }
