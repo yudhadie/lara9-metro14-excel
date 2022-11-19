@@ -7,6 +7,7 @@ use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PrintController extends Controller
 {
@@ -14,14 +15,16 @@ class PrintController extends Controller
     {
         $user = User::all();
         $now = Carbon::now();
+        $ttd = 'ID:'.Auth::user()->id.', Name:'.Auth::user()->name.', Time:'.$now;
 
-        return Pdf::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])
-                ->loadView('admin.setting.print.user', [
-                    'title' => 'Data Users',
-                    'users' => $user,
-                    'now' => $now,
-                 ])
-                 ->setPaper('a4', 'potrait')
-                 ->stream('Data Users.pdf');
+        $pdf = PDF::loadView('admin.setting.print.user', [
+            'title' => 'Data Users',
+            'users' => $user,
+            'now' => $now,
+            'ttd' => $ttd,
+        ]);
+        $pdf->setPaper('a4', 'potrait');
+
+        return $pdf->stream('Data Users.pdf');
     }
 }

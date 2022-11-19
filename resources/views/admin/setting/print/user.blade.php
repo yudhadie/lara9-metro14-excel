@@ -2,8 +2,6 @@
     <head>
         <title>{{$title}}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    </head>
-    <body>
         <style>
             * {
                 font-family: sans-serif;
@@ -67,7 +65,8 @@
                 color: red;
             }
         </style>
-
+    </head>
+    <body>
         <div class="title bold center">
             {{$title}}
         </div>
@@ -120,14 +119,21 @@
                     <br>Mengetahui
                 </td>
             </tr>
-            <tr class="noborder">
-                <td class="ttd"></td>
+            <tr class="noborder center">
+                {{-- <td class="ttd"></td> --}}
                 <td></td>
+                <td>
+                    <img src="data:image/png;base64, {{base64_encode(QrCode::size(70)->generate($ttd))}}">
+                </td>
             </tr>
             <tr class="noborder center">
                 <td class="bold"></td>
                 <td class="bold">{{Auth::user()->name}}</td>
             </tr>
         </table>
+
+        {{-- <div class="page-break"></div> --}}
+
+        {{-- <h1>Page 2</h1> --}}
     </body>
 </html>
