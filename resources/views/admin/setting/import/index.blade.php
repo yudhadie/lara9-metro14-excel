@@ -50,6 +50,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer d-flex justify-content-end py-6 px-9">
+                                    <a href="{{route('save.user')}}" class="btn btn-success me-2">Save</a>
                                     <button type="button" class="btn btn-secondary me-2" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
                                         Export
                                     </button>

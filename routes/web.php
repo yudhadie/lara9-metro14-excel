@@ -43,6 +43,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
             Route::get('/setting/export', [ExportController::class, 'user'])->name('export.user');
             //Print
             Route::get('/setting/user/print', [PrintController::class, 'user'])->name('print.user');
+            Route::get('/setting/user/save', [PrintController::class, 'usersave'])->name('save.user');
             //User
             Route::resource('/setting/user', UserController::class);
             Route::get('/profile', [UserController::class, 'profile'])->name('profile');
